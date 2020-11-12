@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemies/Skeleton.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Skeleton.png" type="Texture" id=2]
@@ -6,6 +6,36 @@
 [ext_resource path="res://Enemies/FiringZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Bow.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Firing",
+"speed": 5.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.69196
@@ -16,19 +46,25 @@ radius = 5.1328
 height = 3.21912
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 79.3072
+radius = 88.0216
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 49.9095
+radius = 72.3941
 
 [node name="Skeleton" type="KinematicBody2D"]
 collision_layer = 16
+collision_mask = 17
 script = ExtResource( 1 )
 MAX_SPEED = 50
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9.64605 )
 texture = ExtResource( 2 )
+
+[node name="BowSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.04056, -8.7704 )
+frames = SubResource( 9 )
+animation = "Idle"
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -9.64605 )
@@ -52,16 +88,20 @@ wait_time = 5.0
 [node name="StateTimer" type="Timer" parent="."]
 
 [node name="DetectionZone" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 position = Vector2( 0, -5.12267 )
 shape = SubResource( 3 )
 
 [node name="FiringZone" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [node name="CollisionShape2D" parent="FiringZone" index="0"]
 position = Vector2( 0, -5 )
 shape = SubResource( 4 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
 
 [editable path="Hurtbox"]

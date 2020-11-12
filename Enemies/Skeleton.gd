@@ -10,6 +10,7 @@ var target = null
 
 onready var stats = $Stats
 onready var sprite = $Sprite
+onready var bowSprite = $BowSprite
 onready var hurtbox = $Hurtbox
 onready var cooldownTimer = $CooldownTimer
 onready var detectionZone = $DetectionZone
@@ -35,22 +36,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	seek_player()
 	match state:
 		IDLE:
 			target = null
 			velocity = velocity.move_toward(Vector2.ZERO, delta) # could do friction * delta
-			seek_player()
+			#seek_player()
 		WANDER: # not implemented
 			target = null
-			seek_player()
+			#seek_player()
 		CHASE:
 			if target != null:
 				accelerate_toward_point(target.position, delta)
-			seek_player()
+			#seek_player()
 		FIRE:
+			var target_position = target.global_position
+			var aim_direction = position.direction_to(target_position)
+			bowSprite.rotation = aim_direction.angle()
 			if not on_cooldown:
 				shoot(target)
-			seek_player()
+			#seek_player()
 		
 	velocity = move_and_slide(velocity)
 
@@ -69,6 +74,7 @@ func seek_player():
 	else: # player not detected
 		target = null
 		state = IDLE
+		velocity = Vector2.ZERO
 	#target = detectionZone.player # acquire target
 
 
@@ -90,5 +96,19 @@ func shoot(target):
 	pass
 
 
+
 func _on_CooldownTimer_timeout():
 	on_cooldown = false
+
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= area.damage
+	#knockback = area.knockback_vector * area.knockback_strength * 1.0 #normal knockback vs skele
+	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.3)
+
+
+func _on_Stats_no_health():
+	# need to add a death animation and sound
+	
+	queue_free()
