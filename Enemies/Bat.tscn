@@ -12,53 +12,53 @@
 [ext_resource path="res://WhiteColor.shader" type="Shader" id=10]
 [ext_resource path="res://Hitboxes/Hitbox.gd" type="Script" id=11]
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 10 )
 shader_param/active = false
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 16, 24 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "Fly",
 "speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 3.11906
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 9.00774
 height = 4.34571
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=10]
 radius = 56.767
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=11]
 radius = 9.13507
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=12]
 radius = 4.80243
 
 [sub_resource type="Animation" id=13]
@@ -99,10 +99,9 @@ collision_layer = 16
 script = ExtResource( 4 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-material = SubResource( 12 )
-frames = SubResource( 6 )
+material = SubResource( 1 )
+frames = SubResource( 7 )
 animation = "Fly"
-frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -111,7 +110,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 8
@@ -119,7 +118,7 @@ collision_mask = 2147483648
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0.346123, -13.8522 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
 max_health = 2
@@ -128,7 +127,7 @@ max_health = 2
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.509804 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 collision_mask = 4
@@ -136,12 +135,12 @@ script = ExtResource( 11 )
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0.794601, -15.3862 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="WanderController" parent="." instance=ExtResource( 9 )]
 
