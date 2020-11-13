@@ -25,6 +25,8 @@ onready var detectionZone = $DetectionZone
 onready var firingZone = $FiringZone
 #export var deathEffectPath : NodePath
 #onready var deathEffect = load(deathEffectPath)
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 
 var arrow = load("res://Enemies/Arrow.tscn")
 var deathEffect = preload("res://Effects/SkeletonDeathEffect.tscn")
@@ -67,7 +69,13 @@ func _physics_process(delta):
 			if not on_cooldown:
 				shoot()
 			#seek_player()
-		
+	# Animation Tree functions
+	if velocity == Vector2.ZERO:
+		animationState.travel("Idle")
+	else:
+		animationTree.set("parameters/Idle/blend_position", velocity.normalized())
+		animationTree.set("parameters/Run/blend_position", velocity.normalized())
+		animationState.travel("Run")
 	velocity = move_and_slide(velocity)
 
 func accelerate_toward_point(point, delta):
