@@ -69,7 +69,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -78,27 +78,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 90.0 ]
+"values": [ Vector2( -1, -7 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1, -7 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -122,7 +110,7 @@ tracks/0/keys = {
 "values": [ 15 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -131,27 +119,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 180.0 ]
+"values": [ Vector2( -5, -14 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5, -14 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -175,7 +151,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:offset")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -184,10 +160,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -3 ) ]
+"values": [ Vector2( 6, -9 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -196,19 +172,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 6, -9 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( 0, -3 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -240,7 +204,7 @@ tracks/1/keys = {
 "values": [ Vector2( 4, -12 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -249,22 +213,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -90.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 0, -3 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 resource_name = "RunDown"
 length = 0.6
 loop = true
@@ -281,7 +233,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -290,10 +242,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 90.0 ]
+"values": [ Vector2( -1, -7 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -302,22 +254,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, -7 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 0, -3 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "RunLeft"
 length = 0.6
 loop = true
@@ -334,7 +274,7 @@ tracks/0/keys = {
 "values": [ 13, 14, 15, 16, 17, 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -343,10 +283,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 180.0 ]
+"values": [ Vector2( -5, -14 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -355,22 +295,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -5, -14 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 0, -3 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=12]
 resource_name = "RunRight"
 length = 0.6
 loop = true
@@ -387,7 +315,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("YSort/BowSprite:offset")
+tracks/1/path = NodePath("YSort/BowSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -396,10 +324,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -3 ) ]
+"values": [ Vector2( 6, -9 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:position")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -408,22 +336,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 6, -9 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"values": [ Vector2( 0, -3 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=13]
 resource_name = "RunUp"
 length = 0.6
 loop = true
@@ -452,7 +368,7 @@ tracks/1/keys = {
 "values": [ Vector2( 4, -12 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("YSort/BowSprite:rotation_degrees")
+tracks/2/path = NodePath("YSort/BowSprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -461,81 +377,69 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -90.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("YSort/BowSprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 0, -3 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "IdleRight"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "IdleUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=10]
-blend_point_0/node = SubResource( 17 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=18]
+blend_point_0/node = SubResource( 14 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 18 )
+blend_point_1/node = SubResource( 15 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 19 )
+blend_point_2/node = SubResource( 16 )
 blend_point_2/pos = Vector2( 0, 1 )
-blend_point_3/node = SubResource( 20 )
+blend_point_3/node = SubResource( 17 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "RunLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "RunRight"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "RunUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=25]
-blend_point_0/node = SubResource( 21 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=23]
+blend_point_0/node = SubResource( 19 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 22 )
+blend_point_1/node = SubResource( 20 )
 blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 23 )
+blend_point_2/node = SubResource( 21 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 24 )
+blend_point_3/node = SubResource( 22 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachine" id=11]
-states/Idle/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/Idle/node = SubResource( 18 )
 states/Idle/position = Vector2( 356, 60 )
-states/Run/node = SubResource( 25 )
+states/Run/node = SubResource( 23 )
 states/Run/position = Vector2( 560, 60 )
-transitions = [ "Idle", "Run", SubResource( 26 ), "Run", "Idle", SubResource( 27 ) ]
+transitions = [ "Idle", "Run", SubResource( 24 ), "Run", "Idle", SubResource( 25 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -41, -43 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
 [node name="Skeleton" type="KinematicBody2D"]
 collision_layer = 16
@@ -607,16 +511,16 @@ anims/IdleDown = SubResource( 6 )
 anims/IdleLeft = SubResource( 7 )
 anims/IdleRight = SubResource( 8 )
 anims/IdleUp = SubResource( 9 )
-anims/RunDown = SubResource( 13 )
-anims/RunLeft = SubResource( 14 )
-anims/RunRight = SubResource( 15 )
-anims/RunUp = SubResource( 16 )
+anims/RunDown = SubResource( 10 )
+anims/RunLeft = SubResource( 11 )
+anims/RunRight = SubResource( 12 )
+anims/RunUp = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 12 )
+parameters/playback = SubResource( 27 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

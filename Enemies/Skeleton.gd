@@ -65,7 +65,10 @@ func _physics_process(delta):
 		FIRE:
 			var target_position = target.global_position
 			var aim_direction = position.direction_to(target_position)
-			bowSprite.rotation = aim_direction.angle()
+			bowSprite.rotation = aim_direction.angle() # Aim bow
+			# Face toward the target
+			animationTree.set("parameters/Idle/blend_position", aim_direction)
+			animationTree.set("parameters/Run/blend_position", aim_direction)
 			if not on_cooldown:
 				shoot()
 			#seek_player()

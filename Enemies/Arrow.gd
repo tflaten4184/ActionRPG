@@ -5,11 +5,12 @@ var direction = Vector2.LEFT
 
 onready var sprite = $Sprite
 onready var HitEffect = preload("res://Effects/HitEffect.tscn")
+onready var firingSoundPlayer = $FiringSoundPlayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	firingSoundPlayer.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
