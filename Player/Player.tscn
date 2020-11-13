@@ -714,7 +714,7 @@ states/Run/node = SubResource( 38 )
 states/Run/position = Vector2( 531.827, 109 )
 transitions = [ "Idle", "Run", SubResource( 39 ), "Run", "Idle", SubResource( 40 ), "Idle", "Attack", SubResource( 41 ), "Attack", "Idle", SubResource( 42 ), "Roll", "Idle", SubResource( 43 ), "Idle", "Roll", SubResource( 44 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -283.173, -7.02248 )
+graph_offset = Vector2( -215.173, 45.9775 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=46]
 
@@ -777,9 +777,10 @@ material = SubResource( 1 )
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 36
+frame = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5708
 shape = SubResource( 2 )
 
@@ -811,8 +812,9 @@ parameters/Roll/blend_position = Vector2( 1, 0 )
 parameters/Run/blend_position = Vector2( 1, 0 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
+visible = false
 position = Vector2( 0, -3 )
-rotation = 1.5708
+rotation = 4.71239
 __meta__ = {
 "_gizmo_extents_": 8.0
 }
@@ -825,8 +827,10 @@ script = ExtResource( 5 )
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2( 13.7309, 3.861 )
 shape = SubResource( 47 )
+disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 0, -8 )
 collision_layer = 4
 

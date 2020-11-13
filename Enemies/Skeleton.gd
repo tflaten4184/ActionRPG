@@ -3,20 +3,31 @@ extends KinematicBody2D
 
 export var MAX_SPEED = 40
 export var ACCELERATION = 100
+export(float, 0, 10, 0.1) var COOLDOWN = 5.0
 #export var FRICTION = 1500
 var velocity = Vector2.ZERO
 
-var target = null
+var target = null # target to shoot at (player), constantly updates
+var aim_position = null # most recent target position (in case target moves/disappears)
 
 onready var stats = $Stats
-onready var sprite = $Sprite
-onready var bowSprite = $BowSprite
+# Testing NodePath to prevent broken references upon reparenting nodes
+export var spritePath : NodePath
+export var bowSpritePath : NodePath
+#onready var spritePath : NodePath
+onready var sprite = get_node(spritePath)
+#onready var sprite = $Sprite
+onready var bowSprite = get_node(bowSpritePath)
+onready var bowAnimationPlayer = $BowAnimationPlayer
 onready var hurtbox = $Hurtbox
 onready var cooldownTimer = $CooldownTimer
 onready var detectionZone = $DetectionZone
 onready var firingZone = $FiringZone
+#export var deathEffectPath : NodePath
+#onready var deathEffect = load(deathEffectPath)
 
 var arrow = load("res://Enemies/Arrow.tscn")
+var deathEffect = preload("res://Effects/SkeletonDeathEffect.tscn")
 
 var state = IDLE #set to IDLE after debugging
 var on_cooldown = false
@@ -54,7 +65,7 @@ func _physics_process(delta):
 			var aim_direction = position.direction_to(target_position)
 			bowSprite.rotation = aim_direction.angle()
 			if not on_cooldown:
-				shoot(target)
+				shoot()
 			#seek_player()
 		
 	velocity = move_and_slide(velocity)
@@ -67,6 +78,7 @@ func seek_player():
 	if firingZone.can_see_player(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
 		target = firingZone.player
+		aim_position = target.position
 		state = FIRE
 	elif detectionZone.can_see_player(): # out of range, but can see
 		state = CHASE # move into range
@@ -75,11 +87,24 @@ func seek_player():
 		target = null
 		state = IDLE
 		velocity = Vector2.ZERO
+
 	#target = detectionZone.player # acquire target
 
 
-func shoot(target):
+func shoot(): # plays animation, which also launches arrow at most recent target
 	print("shoot")
+	# ** Need bow-draw animation
+	#bowSprite.frame = 0
+	bowAnimationPlayer.play("Firing")
+	# ** Animation should call a function to instantiate arrow
+	#spawn_arrow() # ** need to change this so that the animation calls it instead
+	# Set direction (to target)
+	on_cooldown = true
+	# Set cooldown timer
+	cooldownTimer.start(COOLDOWN)
+	#bowSprite.play("Idle")
+	
+func spawn_arrow():
 	# Instantiate an arrow
 	var new_arrow = arrow.instance()
 #	var world = get_parent()
@@ -87,15 +112,7 @@ func shoot(target):
 	get_parent().add_child(new_arrow)
 	new_arrow.position = self.position
 	new_arrow.position.y -= 10
-	new_arrow.direction = new_arrow.position.direction_to(target.position)
-	
-	# Set direction (to target)
-	on_cooldown = true
-	# Set cooldown timer
-	cooldownTimer.start(5)
-	pass
-
-
+	new_arrow.direction = new_arrow.position.direction_to(aim_position)
 
 func _on_CooldownTimer_timeout():
 	on_cooldown = false
@@ -110,5 +127,10 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Stats_no_health():
 	# need to add a death animation and sound
+	# Death Animation
+	var effect = deathEffect.instance()
+	var world = get_parent()
+	world.add_child(effect)
+	effect.position = position
 	
 	queue_free()
