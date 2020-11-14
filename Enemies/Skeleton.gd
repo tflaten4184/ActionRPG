@@ -11,6 +11,7 @@ var target = null # target to shoot at (player), constantly updates
 var aim_position = null # most recent target position (in case target moves/disappears)
 
 onready var stats = $Stats
+onready var spawnSprite = $YSort/SpawnSprite
 # Testing NodePath to prevent broken references upon reparenting nodes
 export var spritePath : NodePath
 export var bowSpritePath : NodePath
@@ -31,10 +32,11 @@ onready var animationState = animationTree.get("parameters/playback")
 var arrow = load("res://Enemies/Arrow.tscn")
 var deathEffect = preload("res://Effects/SkeletonDeathEffect.tscn")
 
-var state = IDLE #set to IDLE after debugging
+var state = STOP #set to IDLE after debugging
 var on_cooldown = false
 
 enum {
+	STOP,
 	IDLE,
 	WANDER,
 	CHASE,
@@ -43,14 +45,24 @@ enum {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#shoot()
-	pass 
+	# hide other sprites until spawn animation finishes
+	sprite.hide()
+	bowSprite.hide()
+	spawnSprite.play()
+
+func _on_SpawnSprite_animation_finished():
+	sprite.show()
+	bowSprite.show()
+	state = IDLE
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	seek_player()
+	if state != STOP:
+		seek_player()
 	match state:
+		STOP:
+			pass # do nothing, states stays in STOP until acted on
 		IDLE:
 			target = null
 			velocity = velocity.move_toward(Vector2.ZERO, delta) # could do friction * delta
@@ -145,3 +157,5 @@ func _on_Stats_no_health():
 	effect.position = position
 	
 	queue_free()
+
+
