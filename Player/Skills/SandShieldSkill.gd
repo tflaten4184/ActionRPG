@@ -18,9 +18,12 @@ func _ready():
 func activate():
 	player = get_parent().player
 	emit_signal("channelling_start")
-	rotation = player.roll_vector.angle()
-	animationPlayer.play("Cone")
+	animationPlayer.play("CreateShield")
+	player.shields = 1
 
 # Animation finished
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("channelling_done")
+
+func shield_popped():
+	animationPlayer.play("DestroyShield")

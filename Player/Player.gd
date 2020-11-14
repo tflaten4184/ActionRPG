@@ -32,6 +32,7 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 # Skills
 onready var artifact = $Artifact
 #onready var flameConeSkill = $FlameConeSkill
+onready var shields = 0
 
 func _ready(): # upon creation, and AFTER child nodes have been created
 	#animationPlayer = $AnimationPlayer # $ accesses a child node
@@ -112,7 +113,9 @@ func move_state(delta):
 		artifact.activate_ability1()
 		#flameConeSkill.rotation = roll_vector.angle()
 		#flameConeSkill.activate()
-		
+	
+	if Input.is_action_just_pressed("ability2"):
+		artifact.activate_ability2()
 	
 func attack_animation_finished():
 	state = MOVE
@@ -139,12 +142,18 @@ func attack_state(delta):
 
 
 func _on_Hurtbox_area_entered(area): # When attacked by a mob's hitbox
-	stats.health -= area.damage
-	print(stats.health)
+	if shields >= 1:
+		shields -= 1
+		artifact.shield_popped()
+	else:
+		stats.health -= area.damage
+		print(stats.health)
+		var playerHurtSound = PlayerHurtSound.instance()
+		get_tree().current_scene.add_child(playerHurtSound)
+		hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.5)
-	hurtbox.create_hit_effect()
-	var playerHurtSound = PlayerHurtSound.instance()
-	get_tree().current_scene.add_child(playerHurtSound)
+	
+	
 	
 
 
