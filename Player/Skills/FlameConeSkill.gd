@@ -2,6 +2,8 @@ extends Node2D
 
 onready var animationPlayer = $AnimationPlayer
 
+signal channelling_start
+signal channelling_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +14,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func activate():
+func activate(player):
+	emit_signal("channelling_start")
+	rotation = player.roll_vector.angle()
 	animationPlayer.play("Cone")
+
+# Animation finished
+func _on_AnimationPlayer_animation_finished(anim_name):
+	emit_signal("channelling_done")

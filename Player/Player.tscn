@@ -9,7 +9,7 @@
 [ext_resource path="res://Music and Sounds/Swipe.wav" type="AudioStream" id=7]
 [ext_resource path="res://Music and Sounds/Evade.wav" type="AudioStream" id=8]
 [ext_resource path="res://WhiteColor.shader" type="Shader" id=9]
-[ext_resource path="res://Player/Skills/FlameSlashSkill.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Skills/Artifact.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
@@ -780,9 +780,6 @@ texture = ExtResource( 1 )
 hframes = 60
 frame = 36
 
-[node name="FlameSlashSkill" parent="." instance=ExtResource( 10 )]
-position = Vector2( 0, -5 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 rotation = 1.5708
@@ -847,6 +844,8 @@ shape = SubResource( 48 )
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Start = SubResource( 49 )
 anims/Stop = SubResource( 50 )
+
+[node name="Artifact" parent="." instance=ExtResource( 10 )]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]

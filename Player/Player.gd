@@ -11,7 +11,8 @@ export var FRICTION = 500
 enum { # States
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACK,
+	CHANNELLING
 }
 
 var state = MOVE
@@ -29,11 +30,15 @@ onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 # Skills
-onready var flameSlashSkill = $FlameSlashSkill
+onready var artifact = $Artifact
+#onready var flameConeSkill = $FlameConeSkill
 
 func _ready(): # upon creation, and AFTER child nodes have been created
 	#animationPlayer = $AnimationPlayer # $ accesses a child node
 	# ^moved to above with "onready" keyword
+	
+	artifact.connect("channelling_start", self, "channelling_start")
+	artifact.connect("channelling_done", self, "channelling_done")
 	
 	randomize() # sets a new random seed for the whole game
 	
@@ -56,6 +61,16 @@ func _physics_process(delta): # called every tick (frame), delta = about 1/60 s
 			roll_state(delta)
 		ATTACK:
 			attack_state(delta)
+		CHANNELLING:
+			velocity = Vector2.ZERO
+			animationState.travel("Idle")
+	
+func channelling_start():
+	state = CHANNELLING
+	
+func channelling_done():
+	state = MOVE
+	
 	
 func move_state(delta):
 	
@@ -88,11 +103,16 @@ func move_state(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
-		flameSlashSkill.rotation = roll_vector.angle()
-		flameSlashSkill.activate()
+		
 		
 	if Input.is_action_just_pressed("roll"):
 		state = ROLL
+	
+	if Input.is_action_just_pressed("ability1"):
+		artifact.activate_ability1()
+		#flameConeSkill.rotation = roll_vector.angle()
+		#flameConeSkill.activate()
+		
 	
 func attack_animation_finished():
 	state = MOVE
