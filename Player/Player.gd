@@ -28,6 +28,9 @@ onready var swordCollisionShape = $HitboxPivot/SwordHitbox/CollisionShape2D
 onready var hurtbox = $Hurtbox
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
+# Skills
+onready var flameSlashSkill = $FlameSlashSkill
+
 func _ready(): # upon creation, and AFTER child nodes have been created
 	#animationPlayer = $AnimationPlayer # $ accesses a child node
 	# ^moved to above with "onready" keyword
@@ -85,6 +88,8 @@ func move_state(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
+		flameSlashSkill.rotation = roll_vector.angle()
+		flameSlashSkill.activate()
 		
 	if Input.is_action_just_pressed("roll"):
 		state = ROLL
@@ -110,6 +115,7 @@ func attack_state(delta):
 	velocity = Vector2.ZERO
 	#animationPlayer.play("AttackRight")
 	animationState.travel("Attack") # Travel causes state transition in animationTree
+	
 
 
 func _on_Hurtbox_area_entered(area): # When attacked by a mob's hitbox

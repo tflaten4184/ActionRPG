@@ -74,7 +74,7 @@ func _physics_process(delta):
 			if target != null:
 				accelerate_toward_point(target.position, delta)
 			#seek_player()
-		FIRE:
+		FIRE: # Firing or waiting for cooldown while aiming
 			var target_position = target.global_position
 			var aim_direction = position.direction_to(target_position)
 			bowSprite.rotation = aim_direction.angle() # Aim bow
