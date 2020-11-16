@@ -25,6 +25,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	run(delta)
+
+func run(delta):
 	
 	match state:
 		IDLE:
@@ -44,6 +47,8 @@ func _physics_process(delta):
 			wander_state(delta)
 		TRAVEL:
 			travel_state(delta)
+		
+	print("physics npc")
 
 	velocity = move_and_slide(velocity)
 

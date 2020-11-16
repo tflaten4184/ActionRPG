@@ -23,7 +23,7 @@ func _ready():
 	state = IDLE
 	enable_wander = true
 
-func _physics_process(delta):
+func run(delta):
 	
 	seek_target()
 	match state:
@@ -46,7 +46,7 @@ func _physics_process(delta):
 			travel_state(delta)
 		CHASE:
 			chase_state(delta)
-
+	print("physics combatnpc")
 	velocity = move_and_slide(velocity)
 
 func seek_target():

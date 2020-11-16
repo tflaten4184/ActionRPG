@@ -40,7 +40,7 @@ enum {
 	IDLE,
 	WANDER,
 	CHASE,
-	FIRE
+	ATTACK
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -74,7 +74,7 @@ func _physics_process(delta):
 			if target != null:
 				accelerate_toward_point(target.position, delta)
 			#seek_player()
-		FIRE: # Firing or waiting for cooldown while aiming
+		ATTACK: # Firing or waiting for cooldown while aiming
 			var target_position = target.global_position
 			var aim_direction = position.direction_to(target_position)
 			bowSprite.rotation = aim_direction.angle() # Aim bow
@@ -102,7 +102,7 @@ func seek_target():
 		velocity = Vector2.ZERO
 		target = firingZone.target
 		aim_position = target.position
-		state = FIRE
+		state = ATTACK
 	elif detectionZone.can_see_target(): # out of range, but can see
 		state = CHASE # move into range
 		target = detectionZone.target

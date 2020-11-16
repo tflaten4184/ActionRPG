@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://NPC/BaseNPC/CombatNPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://WhiteColor.shader" type="Shader" id=2]
+[ext_resource path="res://NPC/BaseNPC/RangedNPC.gd" type="Script" id=3]
+[ext_resource path="res://NPC/BaseNPC/RangedNPC.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Skeleton/Bow.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/Skeleton/FiringZone.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/active = false
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/active = false
+
+[sub_resource type="Animation" id=14]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/WeaponSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_projectile"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 56.0
+
+[node name="RangedNPC" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+weaponSpritePath = NodePath("YSort/WeaponSprite")
+
+[node name="YSort" type="YSort" parent="." index="0"]
+
+[node name="Sprite" type="Sprite" parent="YSort" index="0"]
+material = SubResource( 15 )
+position = Vector2( 0, 3 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -12 )
+
+[node name="WeaponSprite" type="Sprite" parent="YSort" index="1"]
+position = Vector2( -5, -14 )
+rotation = 3.14159
+z_as_relative = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, -3 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Sprite" parent="." index="1"]
+visible = false
+material = SubResource( 16 )
+
+[node name="CooldownTimer" type="Timer" parent="." index="5"]
+wait_time = 5.0
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/Firing = SubResource( 14 )
+
+[node name="FiringZone" parent="." index="11" instance=ExtResource( 7 )]
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="FiringZone" index="0"]
+position = Vector2( 0, -8 )
+shape = SubResource( 17 )
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
+
+[editable path="WanderController"]
+
+[editable path="Hurtbox"]
+
+[editable path="TargetDetectionZone"]
+
+[editable path="FiringZone"]

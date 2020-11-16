@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Bat/Bat1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
-[ext_resource path="res://NPC/BaseNPC/NPC.tscn" type="PackedScene" id=11]
-[ext_resource path="res://NPC/BaseNPC/CombatNPC.tscn" type="PackedScene" id=12]
+[ext_resource path="res://NPC/BaseNPC/RangedNPC.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -496,7 +495,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
-[node name="World" type="Node2D"]
+[node name="TestLevel" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 304, 56 )
@@ -528,12 +527,6 @@ tile_data = PoolIntArray( -983039, 0, 4, -983038, 0, 196609, -983037, 0, 7, -983
 position = Vector2( 264, -216 )
 current = true
 smoothing_enabled = true
-
-[node name="CombatNPC" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 344, -192 )
-
-[node name="NPC" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 144, -184 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 264, -216 )
@@ -578,18 +571,28 @@ position = Vector2( 600, -264 )
 
 [node name="Skeleton" parent="YSort/Enemies" instance=ExtResource( 4 )]
 position = Vector2( -32, -312 )
+spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton/YSort/Sprite")
+bowSpritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton/YSort/BowSprite")
 
 [node name="Skeleton2" parent="YSort/Enemies" instance=ExtResource( 4 )]
 position = Vector2( 56, -376 )
+spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton2/YSort/Sprite")
+bowSpritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton2/YSort/BowSprite")
 
 [node name="Skeleton3" parent="YSort/Enemies" instance=ExtResource( 4 )]
 position = Vector2( 168, -384 )
+spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton3/YSort/Sprite")
+bowSpritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton3/YSort/BowSprite")
 
 [node name="Skeleton4" parent="YSort/Enemies" instance=ExtResource( 4 )]
 position = Vector2( 352, -376 )
+spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton4/YSort/Sprite")
+bowSpritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton4/YSort/BowSprite")
 
 [node name="Skeleton5" parent="YSort/Enemies" instance=ExtResource( 4 )]
 position = Vector2( 456, -320 )
+spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton5/YSort/Sprite")
+bowSpritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton5/YSort/BowSprite")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -636,6 +639,10 @@ position = Vector2( 120, 48 )
 
 [node name="Grass10" parent="YSort/Grass" instance=ExtResource( 8 )]
 position = Vector2( 96, 64 )
+
+[node name="RangedNPC" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 336, -184 )
+collision_mask = 659
 
 [node name="HighGroundObjects" type="Node2D" parent="."]
 
