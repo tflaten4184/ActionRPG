@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=1]
 [ext_resource path="res://NPC/Guard.png" type="Texture" id=2]
 [ext_resource path="res://Hitboxes/Hitbox.gd" type="Script" id=3]
-[ext_resource path="res://Hitboxes/Hurtbox.gd" type="Script" id=4]
-[ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Bat/TargetDetectionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Stats.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hitboxes/Hurtbox.tscn" type="PackedScene" id=9]
@@ -14,18 +13,17 @@
 radius = 6.81087
 height = 3.18644
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 15.7333
 height = 4.34571
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=3]
 radius = 17.3381
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 57.6682
 
-[sub_resource type="Animation" id=2]
-resource_name = "Start"
+[sub_resource type="Animation" id=5]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -41,8 +39,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Stop"
+[sub_resource type="Animation" id=6]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/active")
@@ -76,23 +73,21 @@ shape = SubResource( 1 )
 [node name="Stats" parent="." instance=ExtResource( 7 )]
 max_health = 2
 
-[node name="Hurtbox" type="Area2D" parent="." instance=ExtResource( 9 )]
+[node name="Hurtbox" parent="." instance=ExtResource( 9 )]
 collision_layer = 256
 collision_mask = 2147483648
-script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0.346123, -13.8522 )
-shape = SubResource( 9 )
+shape = SubResource( 2 )
 
-[node name="Hitbox" type="Area2D" parent="." instance=ExtResource( 8 )]
-collision_layer = 0
+[node name="Hitbox" parent="." instance=ExtResource( 8 )]
 collision_mask = 8
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0.794601, -15.3862 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="EnemyDetectionZone" parent="." instance=ExtResource( 6 )]
 collision_mask = 16
@@ -102,13 +97,10 @@ position = Vector2( 0, -10.1782 )
 shape = SubResource( 4 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 2 )
-anims/Stop = SubResource( 3 )
+anims/Start = SubResource( 5 )
+anims/Stop = SubResource( 6 )
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_invincibility_started"]
-[connection signal="timeout" from="Hurtbox/Timer" to="Hurtbox" method="_on_Timer_timeout"]
 
 [editable path="Hurtbox"]
 
