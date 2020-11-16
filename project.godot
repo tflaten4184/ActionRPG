@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ActionRPG"
-run/main_scene="res://World.tscn"
+run/main_scene="res://World/Level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -141,6 +141,8 @@ ability6={
 2d_physics/layer_5="Enemy"
 2d_physics/layer_6="SoftCollisions"
 2d_physics/layer_7="EnemyProjectile"
+2d_physics/layer_8="Ally"
+2d_physics/layer_9="AllyHurtbox"
 
 [rendering]
 

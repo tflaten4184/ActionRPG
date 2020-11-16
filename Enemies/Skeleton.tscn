@@ -578,8 +578,8 @@ active = true
 parameters/playback = SubResource( 40 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
-[connection signal="animation_finished" from="YSort/SpawnSprite" to="." method="_on_SpawnSprite_animation_finished"]
 [connection signal="animation_finished" from="YSort/SpawnSprite" to="YSort/SpawnSprite" method="_on_SpawnSprite_animation_finished"]
+[connection signal="animation_finished" from="YSort/SpawnSprite" to="." method="_on_SpawnSprite_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
