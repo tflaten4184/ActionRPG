@@ -51,7 +51,6 @@ radius = 56.0
 
 [node name="RangedNPC" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-weaponSpritePath = NodePath("YSort/WeaponSprite")
 
 [node name="YSort" type="YSort" parent="." index="0"]
 
@@ -75,13 +74,24 @@ frame = 1
 visible = false
 material = SubResource( 16 )
 
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -3 )
+
 [node name="CooldownTimer" type="Timer" parent="." index="5"]
 wait_time = 5.0
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 anims/Firing = SubResource( 14 )
 
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, 0 )
+shape = null
+
+[node name="TargetDetectionZone" parent="." index="10"]
+visible = false
+
 [node name="FiringZone" parent="." index="11" instance=ExtResource( 7 )]
+visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="FiringZone" index="0"]
@@ -92,6 +102,8 @@ shape = SubResource( 17 )
 [editable path="WanderController"]
 
 [editable path="Hurtbox"]
+
+[editable path="Hitbox"]
 
 [editable path="TargetDetectionZone"]
 

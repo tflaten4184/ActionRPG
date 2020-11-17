@@ -15,6 +15,7 @@ shader = ExtResource( 3 )
 shader_param/active = false
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 16.0
 height = 0.0
 
 [sub_resource type="CircleShape2D" id=3]

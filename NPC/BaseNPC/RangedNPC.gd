@@ -5,8 +5,8 @@ var aim_position = null # most recent target position (in case target moves/disa
 var on_cooldown = false
 export(float, 0, 10, 0.1) var COOLDOWN = 5.0
 
-export var weaponSpritePath : NodePath
-onready var weaponSprite = get_node(weaponSpritePath)
+#export var weaponSpritePath : NodePath
+onready var weaponSprite = $YSort/WeaponSprite
 onready var weaponAnimationPlayer = $WeaponAnimationPlayer
 onready var cooldownTimer = $CooldownTimer
 onready var firingZone = $FiringZone

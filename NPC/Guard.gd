@@ -43,7 +43,7 @@ func accelerate_toward_point(point, delta):
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 
 func seek_player():
-	if enemyDetectionZone.can_see_player():
+	if enemyDetectionZone.can_see_target():
 		state = CHASE
 
 func pick_random_state(state_list):
@@ -52,7 +52,7 @@ func pick_random_state(state_list):
 
 
 func chase_state(delta):
-	var player = enemyDetectionZone.player
+	var player = enemyDetectionZone.target
 	if player == null:
 		state = IDLE
 	else:

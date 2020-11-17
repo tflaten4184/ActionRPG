@@ -9,7 +9,6 @@
 [ext_resource path="res://World/Wood Wall1.png" type="Texture" id=9]
 [ext_resource path="res://NPC/Guard.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
 0/texture = ExtResource( 2 )

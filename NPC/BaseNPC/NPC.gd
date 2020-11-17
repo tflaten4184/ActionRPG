@@ -24,9 +24,10 @@ onready var enable_wander = false
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(delta): # To prevent recursion, this calls the Run function
 	run(delta)
 
+# This is used in place of the _physics_process() function to prevent inheritance recursion
 func run(delta):
 	
 	match state:
