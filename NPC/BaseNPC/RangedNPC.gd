@@ -11,7 +11,7 @@ onready var weaponAnimationPlayer = $WeaponAnimationPlayer
 onready var cooldownTimer = $CooldownTimer
 onready var firingZone = $FiringZone
 
-onready var projectile = preload("res://Enemies/Skeleton/Arrow.tscn")
+onready var projectile = preload("res://NPC/BaseNPC/Projectile.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +43,7 @@ func run(delta):
 			chase_state(delta)
 		ATTACK:
 			attack_state()
-	print("physics rangednpc")
+	#print("physics rangednpc")
 	velocity = move_and_slide(velocity)
 
 func seek_target():

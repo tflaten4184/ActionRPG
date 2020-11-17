@@ -144,6 +144,7 @@ ability6={
 2d_physics/layer_8="Ally"
 2d_physics/layer_9="AllyHurtbox"
 2d_physics/layer_10="NPC"
+2d_physics/layer_11="AllyProjectile"
 
 [rendering]
 

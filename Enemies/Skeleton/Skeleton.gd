@@ -14,12 +14,12 @@ onready var stats = $Stats
 onready var spawnSprite = $YSort/SpawnSprite
 # Testing NodePath to prevent broken references upon reparenting nodes
 export var spritePath : NodePath
-export var bowSpritePath : NodePath
+export var weaponSpritePath : NodePath
 #onready var spritePath : NodePath
 onready var sprite = get_node(spritePath)
 #onready var sprite = $Sprite
-onready var bowSprite = get_node(bowSpritePath)
-onready var bowAnimationPlayer = $BowAnimationPlayer
+onready var weaponSprite = get_node(weaponSpritePath)
+onready var weaponAnimationPlayer = $WeaponAnimationPlayer
 onready var hurtbox = $Hurtbox
 onready var cooldownTimer = $CooldownTimer
 onready var detectionZone = $DetectionZone
@@ -47,12 +47,12 @@ enum {
 func _ready():
 	# hide other sprites until spawn animation finishes
 	sprite.hide()
-	bowSprite.hide()
+	weaponSprite.hide()
 	spawnSprite.play()
 
 func _on_SpawnSprite_animation_finished():
 	sprite.show()
-	bowSprite.show()
+	weaponSprite.show()
 	state = IDLE
 
 
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		ATTACK: # Firing or waiting for cooldown while aiming
 			var target_position = target.global_position
 			var aim_direction = position.direction_to(target_position)
-			bowSprite.rotation = aim_direction.angle() # Aim bow
+			weaponSprite.rotation = aim_direction.angle() # Aim weapon
 			# Face toward the target
 			animationTree.set("parameters/Idle/blend_position", aim_direction)
 			animationTree.set("parameters/Run/blend_position", aim_direction)
@@ -116,18 +116,18 @@ func seek_target():
 
 func shoot(): # plays animation, which also launches arrow at most recent target
 	print("shoot")
-	# ** Need bow-draw animation
-	#bowSprite.frame = 0
-	bowAnimationPlayer.play("Firing")
+	# ** Need weapon-draw animation
+	#weaponSprite.frame = 0
+	weaponAnimationPlayer.play("Firing")
 	# ** Animation should call a function to instantiate arrow
 	#spawn_arrow() # ** need to change this so that the animation calls it instead
 	# Set direction (to target)
 	on_cooldown = true
 	# Set cooldown timer
 	cooldownTimer.start(COOLDOWN)
-	#bowSprite.play("Idle")
+	#weaponSprite.play("Idle")
 	
-func spawn_arrow():
+func spawn_projectile():
 	# Instantiate an arrow
 	var new_arrow = arrow.instance()
 #	var world = get_parent()
@@ -143,6 +143,7 @@ func _on_CooldownTimer_timeout():
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
+	print("skeleton hurtbox entered")
 	#knockback = area.knockback_vector * area.knockback_strength * 1.0 #normal knockback vs skele
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.3)
