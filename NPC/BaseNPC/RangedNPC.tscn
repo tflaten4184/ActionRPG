@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://NPC/BaseNPC/CombatNPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WhiteColor.shader" type="Shader" id=2]
@@ -7,17 +7,17 @@
 [ext_resource path="res://Enemies/Skeleton/Bow.png" type="Texture" id=5]
 [ext_resource path="res://Enemies/Skeleton/FiringZone.tscn" type="PackedScene" id=7]
 
-[sub_resource type="ShaderMaterial" id=15]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/active = false
 
-[sub_resource type="ShaderMaterial" id=16]
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/active = false
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("YSort/WeaponSprite:frame")
@@ -46,7 +46,11 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=5]
+resource_local_to_scene = true
+radius = 56.5685
+
+[sub_resource type="CircleShape2D" id=4]
 radius = 56.0
 
 [node name="RangedNPC" instance=ExtResource( 1 )]
@@ -55,7 +59,7 @@ script = ExtResource( 3 )
 [node name="YSort" type="YSort" parent="." index="0"]
 
 [node name="Sprite" type="Sprite" parent="YSort" index="0"]
-material = SubResource( 15 )
+material = SubResource( 1 )
 position = Vector2( 0, 3 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -12 )
@@ -72,7 +76,7 @@ frame = 1
 
 [node name="Sprite" parent="." index="1"]
 visible = false
-material = SubResource( 16 )
+material = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, -3 )
@@ -81,14 +85,18 @@ position = Vector2( 0, -3 )
 wait_time = 5.0
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-anims/Firing = SubResource( 14 )
+anims/Firing = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 0 )
+shape = null
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
 position = Vector2( 0, 0 )
 shape = null
 
-[node name="TargetDetectionZone" parent="." index="10"]
-visible = false
+[node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
+shape = SubResource( 5 )
 
 [node name="FiringZone" parent="." index="11" instance=ExtResource( 7 )]
 visible = false
@@ -96,7 +104,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="FiringZone" index="0"]
 position = Vector2( 0, -8 )
-shape = SubResource( 17 )
+shape = SubResource( 4 )
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
 
 [editable path="WanderController"]

@@ -14,7 +14,7 @@ enum {
 	WANDER,
 	CHASE
 }
-var state = CHASE
+var state = IDLE
 var FRICTION = 200
 var ACCELERATION = 300
 var MAX_SPEED = 50
@@ -66,7 +66,7 @@ func idle_or_wander():
 	wanderController.start_wander_timer(rand_range(1, 3))
 
 func chase_state(delta):
-	var target = targetDetectionZone.target
+	var target = targetDetectionZone.target[0]
 	if target == null:
 		state = IDLE
 	else:

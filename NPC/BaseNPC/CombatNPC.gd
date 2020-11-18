@@ -28,10 +28,6 @@ func run(delta):
 	seek_target()
 	match state:
 		IDLE:
-			# Check if it needs to travel
-			if travel_target: # if a travel target exists
-				state = TRAVEL
-			
 			# Stop moving
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			
@@ -52,9 +48,14 @@ func run(delta):
 func seek_target():
 	if targetDetectionZone.can_see_target():
 		state = CHASE
+		# Check if it needs to travel
+	elif travel_target: # if a travel target exists
+		state = TRAVEL
+	else:
+		state = IDLE
 
 func chase_state(delta):
-	var target = targetDetectionZone.target
+	var target = targetDetectionZone.target[0]
 	if target == null:
 		state = IDLE
 	else:
@@ -72,14 +73,14 @@ func _on_Hurtbox_area_entered(area):
 	hurtbox.start_invincibility(0.3)
 	
 
-func _on_Stats_no_health():
-	queue_free()
-	# Add death effect here
-#	var effect = death_effect.instance()
-#	var world = get_parent()
-#	world.add_child(effect)
-#	effect.position = position
-#	effect.play()
+#func _on_Stats_no_health():
+#	queue_free()
+#	# Add death effect here
+##	var effect = death_effect.instance()
+##	var world = get_parent()
+##	world.add_child(effect)
+##	effect.position = position
+##	effect.play()
 
 
 func _on_Hurtbox_invincibility_started():

@@ -1,14 +1,17 @@
 extends Area2D
 
-var target = null
+var target = []
 
 func can_see_target(): # in firing range
-	return target != null
+	return target.empty() == false
 
 
 func _on_FiringZone_body_entered(body):
-	target = body
+	target.append(body)
+	print("target in range")
 
 
 func _on_FiringZone_body_exited(body):
-	target = null
+	#target = null
+	var body_index = target.find(body)
+	target.remove(body_index)

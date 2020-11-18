@@ -23,11 +23,7 @@ func run(delta):
 	
 	seek_target()
 	match state:
-		IDLE:
-			# Check if it needs to travel
-			if travel_target: # if a travel target exists
-				state = TRAVEL
-			
+		IDLE:	
 			# Stop moving (decelerate to 0)
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			
@@ -49,12 +45,16 @@ func run(delta):
 func seek_target():
 	if firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
-		target = firingZone.target
+		target = firingZone.target[0]
 		aim_position = target.position
 		state = ATTACK
 	elif targetDetectionZone.can_see_target(): # out of range, but can see
 		state = CHASE # move into range
-		target = targetDetectionZone.target
+		target = targetDetectionZone.target[0]
+	# Check if it needs to travel
+	elif travel_target: # if a travel target exists
+		target = null
+		state = TRAVEL
 	else: # target not detected
 		target = null
 		state = IDLE

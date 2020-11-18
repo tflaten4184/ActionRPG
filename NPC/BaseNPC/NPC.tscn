@@ -12,7 +12,7 @@ resource_local_to_scene = true
 shader = ExtResource( 8 )
 shader_param/active = false
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=52]
 radius = 8.0
 
 [node name="NPC" type="KinematicBody2D"]
@@ -31,7 +31,7 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 52 )
 
 [node name="Stats" parent="." instance=ExtResource( 6 )]
 

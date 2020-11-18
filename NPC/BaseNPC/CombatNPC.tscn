@@ -18,19 +18,18 @@ shader_param/active = false
 radius = 16.0
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=53]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 88.0
+[sub_resource type="CircleShape2D" id=54]
+resource_local_to_scene = true
+radius = 56.5685
 
-[sub_resource type="Animation" id=4]
-resource_name = "Start"
+[sub_resource type="Animation" id=55]
 length = 0.2
 loop = true
 
-[sub_resource type="Animation" id=5]
-resource_name = "Stop"
+[sub_resource type="Animation" id=56]
 length = 0.1
 
 [node name="CombatNPC" instance=ExtResource( 2 )]
@@ -58,18 +57,18 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -8 )
-shape = SubResource( 3 )
+shape = SubResource( 53 )
 
 [node name="TargetDetectionZone" parent="." index="7" instance=ExtResource( 6 )]
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
 position = Vector2( 0, -8 )
-shape = SubResource( 6 )
+shape = SubResource( 54 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
-anims/Start = SubResource( 4 )
-anims/Stop = SubResource( 5 )
+anims/Start = SubResource( 55 )
+anims/Stop = SubResource( 56 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]

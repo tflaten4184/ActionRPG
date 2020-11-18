@@ -38,6 +38,8 @@ func _ready(): # upon creation, and AFTER child nodes have been created
 	#animationPlayer = $AnimationPlayer # $ accesses a child node
 	# ^moved to above with "onready" keyword
 	
+	Engine.time_scale = 0.8
+	
 	artifact.connect("channelling_start", self, "channelling_start")
 	artifact.connect("channelling_done", self, "channelling_done")
 	
@@ -55,6 +57,7 @@ func _ready(): # upon creation, and AFTER child nodes have been created
 func _physics_process(delta): # called every tick (frame), delta = about 1/60 s
 	# Note: need to multiply values by delta when they change over time
 	#   (when they're connected to the framerate)
+	print(Engine.get_frames_per_second())
 	match state: # Like a switch-statement
 		MOVE:
 			move_state(delta)

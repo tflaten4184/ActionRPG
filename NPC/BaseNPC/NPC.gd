@@ -36,8 +36,9 @@ func run(delta):
 			if travel_target: # if a travel target exists
 				state = TRAVEL
 			
-			# Stop moving
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			else:
+				# Stop moving
+				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 			
 			
 			# Decide whether to start wandering
@@ -49,7 +50,7 @@ func run(delta):
 		TRAVEL:
 			travel_state(delta)
 		
-	print("physics npc")
+	#print("physics npc")
 
 	velocity = move_and_slide(velocity)
 
@@ -58,7 +59,7 @@ func accelerate_toward_point(point, delta):
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 
 func travel_state(delta):
-	if position.distance_to(travel_target) > 10:
+	if global_position.distance_to(travel_target) > 10:
 		accelerate_toward_point(travel_target, delta)
 	else:
 		travel_target = null

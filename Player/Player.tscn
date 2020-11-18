@@ -22,7 +22,7 @@ height = 3.58989
 [sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +48,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Player/HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -60,7 +60,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Player/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -72,7 +72,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("../Player/AudioStreamPlayer")
+tracks/4/path = NodePath("AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -89,7 +89,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -115,7 +115,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Player/HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -127,7 +127,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Player/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -139,7 +139,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("../Player/AudioStreamPlayer")
+tracks/4/path = NodePath("AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -156,7 +156,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -182,7 +182,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Player/HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -194,7 +194,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Player/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -206,7 +206,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("../Player/AudioStreamPlayer")
+tracks/4/path = NodePath("AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -223,7 +223,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -249,7 +249,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Player/HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -261,7 +261,7 @@ tracks/2/keys = {
 "values": [ 270.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Player/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -273,7 +273,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("../Player/AudioStreamPlayer")
+tracks/4/path = NodePath("AudioStreamPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -291,7 +291,7 @@ tracks/4/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -307,7 +307,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -323,7 +323,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -339,7 +339,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -356,7 +356,7 @@ length = 0.3
 loop = true
 step = 0.06
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -382,7 +382,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "audio"
-tracks/2/path = NodePath("../Player/AudioStreamPlayer")
+tracks/2/path = NodePath("AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -401,7 +401,7 @@ length = 0.3
 loop = true
 step = 0.06
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -427,7 +427,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "audio"
-tracks/2/path = NodePath("../Player/AudioStreamPlayer")
+tracks/2/path = NodePath("AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -446,7 +446,7 @@ length = 0.3
 loop = true
 step = 0.06
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -472,7 +472,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "audio"
-tracks/2/path = NodePath("../Player/AudioStreamPlayer")
+tracks/2/path = NodePath("AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -491,7 +491,7 @@ length = 0.3
 loop = true
 step = 0.06
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -517,7 +517,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "audio"
-tracks/2/path = NodePath("../Player/AudioStreamPlayer")
+tracks/2/path = NodePath("AudioStreamPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -535,7 +535,7 @@ tracks/2/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -551,7 +551,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -567,7 +567,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -583,7 +583,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -732,7 +732,7 @@ resource_name = "Start"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:material:shader_param/active")
+tracks/0/path = NodePath("PlayerSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -748,7 +748,7 @@ tracks/0/keys = {
 resource_name = "Stop"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Player/PlayerSprite:material:shader_param/active")
+tracks/0/path = NodePath("PlayerSprite:material:shader_param/active")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
