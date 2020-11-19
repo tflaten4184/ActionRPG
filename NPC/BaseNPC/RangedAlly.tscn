@@ -1,14 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://NPC/BaseNPC/RangedNPC.tscn" type="PackedScene" id=1]
-[ext_resource path="res://NPC/BaseNPC/RangedAlly.png" type="Texture" id=2]
+[ext_resource path="res://NPC/BaseNPC/CombatNPCPlaceholder.png" type="Texture" id=2]
 [ext_resource path="res://WhiteColor.shader" type="Shader" id=3]
 [ext_resource path="res://NPC/BaseNPC/RangedAlly.gd" type="Script" id=4]
-
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
-shader = ExtResource( 3 )
-shader_param/active = false
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -25,28 +20,24 @@ radius = 100.0
 [node name="RangedAlly" groups=[
 "allies",
 ] instance=ExtResource( 1 )]
-collision_mask = 659
 script = ExtResource( 4 )
 
-[node name="Sprite" parent="YSort" index="0"]
-material = SubResource( 1 )
-texture = ExtResource( 2 )
-
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="YSort" index="2"]
 material = SubResource( 2 )
 position = Vector2( 0, 3 )
+texture = ExtResource( 2 )
 offset = Vector2( 0, -12 )
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
 shape = SubResource( 4 )
 
-[editable path="WanderController"]
-
 [editable path="Hurtbox"]
+
+[editable path="WanderController"]
 
 [editable path="Hitbox"]
 
