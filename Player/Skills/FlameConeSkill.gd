@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var animationPlayer = $AnimationPlayer
+onready var sound = $SoundEffect
 onready var player = get_parent().player
 
 signal channelling_start
@@ -20,6 +21,7 @@ func activate():
 	emit_signal("channelling_start")
 	rotation = player.roll_vector.angle()
 	animationPlayer.play("Cone")
+	sound.play()
 
 # Animation finished
 func _on_AnimationPlayer_animation_finished(anim_name):

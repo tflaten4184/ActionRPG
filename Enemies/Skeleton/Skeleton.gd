@@ -100,12 +100,12 @@ func accelerate_toward_point(point, delta):
 func seek_target():
 	if firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
-		target = firingZone.target
+		target = firingZone.target[0]
 		aim_position = target.position
 		state = ATTACK
 	elif detectionZone.can_see_target(): # out of range, but can see
 		state = CHASE # move into range
-		target = detectionZone.target
+		target = detectionZone.target[0]
 	else: # target not detected
 		target = null
 		state = IDLE

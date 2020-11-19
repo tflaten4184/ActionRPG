@@ -57,7 +57,8 @@ func _ready(): # upon creation, and AFTER child nodes have been created
 func _physics_process(delta): # called every tick (frame), delta = about 1/60 s
 	# Note: need to multiply values by delta when they change over time
 	#   (when they're connected to the framerate)
-	print(Engine.get_frames_per_second())
+	
+	#print(Engine.get_frames_per_second())
 	match state: # Like a switch-statement
 		MOVE:
 			move_state(delta)

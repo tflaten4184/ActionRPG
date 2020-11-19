@@ -20,7 +20,8 @@ var FRICTION = 200
 var ACCELERATION = 300
 var MAX_SPEED = 50
 var velocity = Vector2.ZERO
-var knockback = Vector2.ZERO
+onready var knockback = Vector2.ZERO
+var knockback_multiplier = 1.0
 onready var travel_target = null
 
 onready var enable_wander = false
@@ -29,10 +30,15 @@ func _ready():
 	pass
 
 func _physics_process(delta): # To prevent recursion, this calls the Run function
+	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+	knockback = move_and_slide(knockback)
 	run(delta)
 
 # This is used in place of the _physics_process() function to prevent inheritance recursion
 func run(delta):
+	
+#	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+#	knockback = move_and_slide(knockback)
 	
 	match state:
 		IDLE:
@@ -91,7 +97,7 @@ func _on_Hurtbox_area_entered(area):
 	# "area" refers to the "intruder" (sword hitbox)
 	stats.health -= area.damage
 	#print(stats.health)
-	knockback = area.knockback_vector * area.knockback_strength * 1.5 #1.5 bonus knockback vs Bat
+	knockback = area.knockback_vector * area.knockback_strength * knockback_multiplier
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.3)
 

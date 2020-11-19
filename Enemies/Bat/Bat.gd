@@ -21,7 +21,7 @@ var MAX_SPEED = 50
 var velocity = Vector2.ZERO
 
 var death_effect = preload("res://Effects/EnemyDeathEffect.tscn")
-
+var target = null
 func _ready():
 	#print(stats.max_health)
 	#print(stats.health)
@@ -66,7 +66,8 @@ func idle_or_wander():
 	wanderController.start_wander_timer(rand_range(1, 3))
 
 func chase_state(delta):
-	var target = targetDetectionZone.target[0]
+	if targetDetectionZone.can_see_target():
+		target = targetDetectionZone.target[0]
 	if target == null:
 		state = IDLE
 	else:

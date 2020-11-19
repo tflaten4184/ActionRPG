@@ -535,13 +535,12 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="RangedAlly" parent="YSort/Allies" instance=ExtResource( 8 )]
 position = Vector2( 56, 192 )
-collision_mask = 659
+collision_layer = 640
 
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 6 )]
 position = Vector2( 48, 120 )
-collision_mask = 659
 
 [node name="AllyBuildings" type="YSort" parent="YSort"]
 
@@ -558,16 +557,16 @@ collision_mask = 659
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 [node name="AllyCommander" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 272 )
+position = Vector2( 0, 456 )
 
 [node name="Objective" parent="AllyCommander" index="0"]
-position = Vector2( -5, -526 )
+position = Vector2( 0, -936 )
 
 [node name="EnemyCommander" parent="." instance=ExtResource( 7 )]
-position = Vector2( -5, -238 )
+position = Vector2( 0, -456 )
 
 [node name="Objective" parent="EnemyCommander" index="0"]
-position = Vector2( 0, 560 )
+position = Vector2( 0, 936 )
 
 [editable path="AllyCommander"]
 

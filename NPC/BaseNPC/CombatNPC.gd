@@ -16,12 +16,13 @@ onready var targetDetectionZone = $TargetDetectionZone
 # ATTACK,
 # CHANNEL
 
-#var knockback = Vector2.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state = IDLE
 	enable_wander = true
+	#knockback = 50
 
 func run(delta):
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
@@ -10,19 +10,10 @@
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Bat/Bat1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemies/Bat/TargetDetectionZone.gd" type="Script" id=11]
+[ext_resource path="res://Enemies/BaseEnemy/CombatEnemy.tscn" type="PackedScene" id=11]
 [ext_resource path="res://NPC/BaseNPC/RangedAlly.tscn" type="PackedScene" id=12]
 [ext_resource path="res://NPC/BaseNPC/RangedNPC.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Enemies/BaseEnemy/RangedEnemy.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Enemies/BaseEnemy/CombatEnemy.gd" type="Script" id=15]
-[ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=16]
-[ext_resource path="res://Enemies/BaseEnemy/EnemyPlaceholder.png" type="Texture" id=17]
-[ext_resource path="res://Stats.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Enemies/Bat/WanderController.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Hitboxes/Hitbox.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Hitboxes/Hurtbox.tscn" type="PackedScene" id=21]
-[ext_resource path="res://WhiteColor.shader" type="Shader" id=22]
-[ext_resource path="res://Hitboxes/Hitbox.gd" type="Script" id=23]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -507,28 +498,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
-[sub_resource type="ShaderMaterial" id=51]
-resource_local_to_scene = true
-shader = ExtResource( 22 )
-shader_param/active = false
-
-[sub_resource type="CircleShape2D" id=52]
-radius = 8.0
-
-[sub_resource type="CircleShape2D" id=53]
-radius = 16.0
-
-[sub_resource type="CircleShape2D" id=54]
-resource_local_to_scene = true
-radius = 73.0
-
-[sub_resource type="Animation" id=55]
-length = 0.2
-loop = true
-
-[sub_resource type="Animation" id=56]
-length = 0.1
-
 [node name="TestLevel" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
@@ -613,6 +582,10 @@ spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton4/YSort/Sprit
 position = Vector2( 456, -320 )
 spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton5/YSort/Sprite")
 
+[node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 40, -328 )
+collision_mask = 659
+
 [node name="Bushes" type="YSort" parent="YSort"]
 
 [node name="Bush" parent="YSort/Bushes" instance=ExtResource( 6 )]
@@ -675,70 +648,12 @@ position = Vector2( 40, 144 )
 [node name="RangedAlly" parent="." instance=ExtResource( 12 )]
 position = Vector2( 56, -296 )
 collision_layer = 640
-collision_mask = 659
 
 [node name="RangedAlly2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 16, -296 )
 collision_layer = 640
-collision_mask = 659
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 14 )]
 position = Vector2( 272, -424 )
-COOLDOWN = 2.3
-
-[node name="CombatEnemy" type="KinematicBody2D" parent="." groups=[
-"enemies",
-]]
-position = Vector2( 39, -328 )
-collision_layer = 16
 collision_mask = 659
-script = ExtResource( 15 )
-
-[node name="Sprite" type="Sprite" parent="CombatEnemy"]
-material = SubResource( 51 )
-position = Vector2( 0, 3 )
-texture = ExtResource( 17 )
-offset = Vector2( 0, -12 )
-
-[node name="ShadowSprite" type="Sprite" parent="CombatEnemy"]
-texture = ExtResource( 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatEnemy"]
-rotation = 1.5708
-shape = SubResource( 52 )
-
-[node name="Stats" parent="CombatEnemy" instance=ExtResource( 18 )]
-max_health = 4
-
-[node name="WanderController" parent="CombatEnemy" instance=ExtResource( 19 )]
-
-[node name="Hurtbox" parent="CombatEnemy" instance=ExtResource( 21 )]
-collision_layer = 8
-collision_mask = 2147483648
-
-[node name="Hitbox" parent="CombatEnemy" instance=ExtResource( 20 )]
-collision_mask = 260
-script = ExtResource( 23 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatEnemy/Hitbox"]
-position = Vector2( 0, -8 )
-shape = SubResource( 53 )
-
-[node name="TargetDetectionZone" type="Area2D" parent="CombatEnemy"]
-collision_layer = 0
-collision_mask = 130
-script = ExtResource( 11 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatEnemy/TargetDetectionZone"]
-position = Vector2( 0, -8 )
-shape = SubResource( 54 )
-
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="CombatEnemy"]
-anims/Start = SubResource( 55 )
-anims/Stop = SubResource( 56 )
-[connection signal="no_health" from="CombatEnemy/Stats" to="CombatEnemy" method="_on_Stats_no_health"]
-[connection signal="area_entered" from="CombatEnemy/Hurtbox" to="CombatEnemy" method="_on_Hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="CombatEnemy/Hurtbox" to="CombatEnemy" method="_on_Hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="CombatEnemy/Hurtbox" to="CombatEnemy" method="_on_Hurtbox_invincibility_started"]
-[connection signal="body_entered" from="CombatEnemy/TargetDetectionZone" to="CombatEnemy/TargetDetectionZone" method="_on_TargetDetectionZone_body_entered"]
-[connection signal="body_exited" from="CombatEnemy/TargetDetectionZone" to="CombatEnemy/TargetDetectionZone" method="_on_TargetDetectionZone_body_exited"]
+COOLDOWN = 2.3
