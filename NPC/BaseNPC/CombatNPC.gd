@@ -2,8 +2,8 @@ extends "res://NPC/BaseNPC/NPC.gd"
 
 
 onready var targetDetectionZone = $TargetDetectionZone
-onready var hurtbox = $Hurtbox
-onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+#onready var hurtbox = $Hurtbox
+#onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 # Add a death effect
 #var death_effect = preload("res://Effects/EnemyDeathEffect.tscn")
@@ -16,7 +16,7 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 # ATTACK,
 # CHANNEL
 
-var knockback = Vector2.ZERO
+#var knockback = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,14 +63,14 @@ func chase_state(delta):
 		# Note: position is actually a vector
 		accelerate_toward_point(target.global_position, delta)
 
-# Handles damage and knockback against Bat
-func _on_Hurtbox_area_entered(area):
-	# "area" refers to the "intruder" (sword hitbox)
-	stats.health -= area.damage
-	#print(stats.health)
-	knockback = area.knockback_vector * area.knockback_strength * 1.5 #1.5 bonus knockback vs Bat
-	hurtbox.create_hit_effect()
-	hurtbox.start_invincibility(0.3)
+## Handles damage and knockback against Bat
+#func _on_Hurtbox_area_entered(area):
+#	# "area" refers to the "intruder" (sword hitbox)
+#	stats.health -= area.damage
+#	#print(stats.health)
+#	knockback = area.knockback_vector * area.knockback_strength * 1.5 #1.5 bonus knockback vs Bat
+#	hurtbox.create_hit_effect()
+#	hurtbox.start_invincibility(0.3)
 	
 
 #func _on_Stats_no_health():
@@ -83,9 +83,9 @@ func _on_Hurtbox_area_entered(area):
 ##	effect.play()
 
 
-func _on_Hurtbox_invincibility_started():
-	blinkAnimationPlayer.play("Start")
-
-
-func _on_Hurtbox_invincibility_ended():
-	blinkAnimationPlayer.play("Stop")
+#func _on_Hurtbox_invincibility_started():
+#	blinkAnimationPlayer.play("Start")
+#
+#
+#func _on_Hurtbox_invincibility_ended():
+#	blinkAnimationPlayer.play("Stop")

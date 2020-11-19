@@ -520,7 +520,7 @@ radius = 16.0
 
 [sub_resource type="CircleShape2D" id=54]
 resource_local_to_scene = true
-radius = 56.5685
+radius = 73.0
 
 [sub_resource type="Animation" id=55]
 length = 0.2
@@ -689,7 +689,7 @@ COOLDOWN = 2.3
 [node name="CombatEnemy" type="KinematicBody2D" parent="." groups=[
 "enemies",
 ]]
-position = Vector2( 40, -328 )
+position = Vector2( 39, -328 )
 collision_layer = 16
 collision_mask = 659
 script = ExtResource( 15 )

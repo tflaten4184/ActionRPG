@@ -38,7 +38,7 @@ func _ready(): # upon creation, and AFTER child nodes have been created
 	#animationPlayer = $AnimationPlayer # $ accesses a child node
 	# ^moved to above with "onready" keyword
 	
-	Engine.time_scale = 0.8
+	Engine.time_scale = 0.2 # Adjust the game speed
 	
 	artifact.connect("channelling_start", self, "channelling_start")
 	artifact.connect("channelling_done", self, "channelling_done")

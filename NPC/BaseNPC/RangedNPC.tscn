@@ -48,7 +48,7 @@ tracks/1/keys = {
 
 [sub_resource type="CircleShape2D" id=5]
 resource_local_to_scene = true
-radius = 56.5685
+radius = 104.0
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 56.0
@@ -99,7 +99,6 @@ shape = null
 shape = SubResource( 5 )
 
 [node name="FiringZone" parent="." index="11" instance=ExtResource( 7 )]
-visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="FiringZone" index="0"]

@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 onready var stats = $Stats
 onready var wanderController = $WanderController
+onready var hurtbox = $Hurtbox
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 enum {
 	IDLE,
@@ -17,6 +19,7 @@ var FRICTION = 200
 var ACCELERATION = 300
 var MAX_SPEED = 50
 var velocity = Vector2.ZERO
+var knockback = Vector2.ZERO
 onready var travel_target = null
 
 onready var enable_wander = false
@@ -82,6 +85,15 @@ func wander_state(delta):
 	if global_position.distance_to(wanderController.target_position) <= 1:
 		idle_or_wander()
 	
+# Handles damage and knockback against Bat
+func _on_Hurtbox_area_entered(area):
+	# "area" refers to the "intruder" (sword hitbox)
+	stats.health -= area.damage
+	#print(stats.health)
+	knockback = area.knockback_vector * area.knockback_strength * 1.5 #1.5 bonus knockback vs Bat
+	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.3)
+
 func _on_Stats_no_health():
 	queue_free()
 	# Add death effect here
@@ -91,3 +103,10 @@ func _on_Stats_no_health():
 #	effect.position = position
 #	effect.play()
 
+func _on_Hurtbox_invincibility_started():
+	blinkAnimationPlayer.play("Start")
+	print("start blink effect")
+
+
+func _on_Hurtbox_invincibility_ended():
+	blinkAnimationPlayer.play("Stop")
