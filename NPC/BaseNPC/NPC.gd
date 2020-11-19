@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var sprite = $Sprite
+onready var sprite = $YSort/Sprite
 onready var stats = $Stats
 onready var wanderController = $WanderController
 onready var hurtbox = $Hurtbox
@@ -14,6 +14,7 @@ enum {
 	ATTACK,
 	CHANNEL
 }
+
 var state = IDLE
 var FRICTION = 200
 var ACCELERATION = 300

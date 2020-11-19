@@ -1,14 +1,13 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=3]
 [ext_resource path="res://AI/AllyCommander.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/BaseEnemy/RangedEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/BaseEnemy/CombatEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://AI/EnemyCommander.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Buildings/Building.tscn" type="PackedScene" id=8]
-[ext_resource path="res://NPC/BaseNPC/NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPC/BaseNPC/RangedAlly.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
@@ -534,48 +533,17 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Allies" type="YSort" parent="YSort"]
 
-[node name="NPC" parent="YSort/Allies" instance=ExtResource( 9 )]
-position = Vector2( 0, 104 )
+[node name="RangedAlly" parent="YSort/Allies" instance=ExtResource( 8 )]
+position = Vector2( 56, 192 )
+collision_mask = 659
 
 [node name="Enemies" type="YSort" parent="YSort"]
 
-[node name="RangedEnemy" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( -37, -166 )
-
-[node name="RangedEnemy2" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( 3, -166 )
-
-[node name="RangedEnemy4" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( 91, -134 )
-
-[node name="RangedEnemy3" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( 51, -150 )
-
-[node name="RangedEnemy5" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( -64, -150 )
-
-[node name="RangedEnemy6" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( -72, -80 )
-
-[node name="RangedEnemy7" parent="YSort/Enemies" instance=ExtResource( 6 )]
-position = Vector2( 67, -94 )
+[node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 6 )]
+position = Vector2( 48, 120 )
+collision_mask = 659
 
 [node name="AllyBuildings" type="YSort" parent="YSort"]
-
-[node name="Building" parent="YSort/AllyBuildings" instance=ExtResource( 8 )]
-position = Vector2( -72, 128 )
-
-[node name="Building2" parent="YSort/AllyBuildings" instance=ExtResource( 8 )]
-position = Vector2( 48, 72 )
-
-[node name="Building3" parent="YSort/AllyBuildings" instance=ExtResource( 8 )]
-position = Vector2( -40, 32 )
-
-[node name="Building4" parent="YSort/AllyBuildings" instance=ExtResource( 8 )]
-position = Vector2( 32, 176 )
-
-[node name="Building5" parent="YSort/AllyBuildings" instance=ExtResource( 8 )]
-position = Vector2( 104, 128 )
 
 [node name="EnemyBuildings" type="YSort" parent="YSort"]
 
