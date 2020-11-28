@@ -46,7 +46,7 @@ resource_local_to_scene = true
 radius = 104.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 56.0
+radius = 88.0
 
 [node name="RangedNPC" instance=ExtResource( 1 )]
 script = ExtResource( 3 )

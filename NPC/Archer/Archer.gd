@@ -1,16 +1,22 @@
 extends "res://NPC/BaseNPC/RangedAlly.gd"
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	projectile = preload("res://NPC/Archer/AllyArrow.tscn")
 
+func animate():
+	# Animation Tree functions
+	if velocity == Vector2.ZERO:
+		animationState.travel("Idle")
+	else:
+		animationTree.set("parameters/Idle/blend_position", velocity.normalized())
+		animationTree.set("parameters/Run/blend_position", velocity.normalized())
+		animationState.travel("Run")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func animate_aim_body(aim_direction):
+	# Face toward the target
+	animationTree.set("parameters/Idle/blend_position", aim_direction)
+	animationTree.set("parameters/Run/blend_position", aim_direction)

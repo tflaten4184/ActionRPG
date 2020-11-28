@@ -16,5 +16,7 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	var new_unit = unit.instance()
-	get_parent().add_child(new_unit)
-	new_unit.position = position
+	# bad practice, but use for testing for now:
+	# globalYsort > buildings > thisbuilding > thisSpawner
+	get_parent().get_parent().get_parent().add_child(new_unit)
+	new_unit.position = global_position

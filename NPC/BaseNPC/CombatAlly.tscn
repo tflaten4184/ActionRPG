@@ -23,11 +23,17 @@ script = ExtResource( 2 )
 material = SubResource( 1 )
 texture = ExtResource( 3 )
 
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, 0 )
+shape = null
+
 [node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
 shape = SubResource( 2 )
 
 [editable path="Hurtbox"]
 
 [editable path="WanderController"]
+
+[editable path="Hitbox"]
 
 [editable path="TargetDetectionZone"]

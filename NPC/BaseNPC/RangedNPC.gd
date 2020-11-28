@@ -24,13 +24,7 @@ func run(delta):
 	seek_target()
 	match state:
 		IDLE:	
-			# Stop moving (decelerate to 0)
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			
-			# Decide whether to start wandering
-			if enable_wander == true and wanderController.get_time_left() == 0:
-				state = pick_random_state([IDLE, WANDER])
-				wanderController.start_wander_timer(rand_range(1, 3))
+			idle_state(delta)
 		WANDER:
 			wander_state(delta)
 		TRAVEL:
@@ -40,8 +34,21 @@ func run(delta):
 		ATTACK:
 			attack_state()
 	#print("physics rangednpc")
+	animate()
 	velocity = move_and_slide(velocity)
 
+func animate():
+	pass
+
+func idle_state(delta):
+	# Stop moving (decelerate to 0)
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	# Decide whether to start wandering
+	if enable_wander == true and wanderController.get_time_left() == 0:
+		state = pick_random_state([IDLE, WANDER])
+		wanderController.start_wander_timer(rand_range(1, 3))
+		
 func seek_target():
 	if firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
@@ -69,10 +76,15 @@ func attack_state():
 	var aim_direction = position.direction_to(target_position)
 	weaponSprite.rotation = aim_direction.angle() # Aim bow
 	# Face toward the target
+	animate_aim_body(aim_direction)
 	#animationTree.set("parameters/Idle/blend_position", aim_direction)
 	#animationTree.set("parameters/Run/blend_position", aim_direction)
 	if not on_cooldown:
 		shoot()
+
+func animate_aim_body(aim_direction):
+	# Face toward the target (if object has animations)
+	pass
 
 func shoot(): # plays animation, which also launches arrow at most recent target
 	print("shoot")
