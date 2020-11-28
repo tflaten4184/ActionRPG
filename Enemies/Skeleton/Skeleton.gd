@@ -92,6 +92,9 @@ func _physics_process(delta):
 		animationTree.set("parameters/Run/blend_position", velocity.normalized())
 		animationState.travel("Run")
 	velocity = move_and_slide(velocity)
+	
+func animate():
+	pass
 
 func accelerate_toward_point(point, delta):
 	var direction = global_position.direction_to(point)

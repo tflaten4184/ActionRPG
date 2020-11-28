@@ -46,7 +46,7 @@ func seek_target():
 	if firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
 		target = firingZone.target[0]
-		aim_position = target.position
+		aim_position = target.global_position
 		state = ATTACK
 	elif targetDetectionZone.can_see_target(): # out of range, but can see
 		state = CHASE # move into range
@@ -62,7 +62,7 @@ func seek_target():
 
 func chase_state(delta):
 	if target != null:
-				accelerate_toward_point(target.position, delta)
+				accelerate_toward_point(target.global_position, delta)
 
 func attack_state():
 	var target_position = target.global_position

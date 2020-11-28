@@ -22,7 +22,7 @@ onready var targetDetectionZone = $TargetDetectionZone
 func _ready():
 	state = IDLE
 	enable_wander = true
-	#knockback = 50
+
 
 func run(delta):
 	
@@ -43,12 +43,14 @@ func run(delta):
 			travel_state(delta)
 		CHASE:
 			chase_state(delta)
-	print("physics combatnpc")
+	#print("physics combatnpc")
+	animate()
 	velocity = move_and_slide(velocity)
 
 func seek_target():
 	if targetDetectionZone.can_see_target():
 		state = CHASE
+		var target = targetDetectionZone.target[0]
 		# Check if it needs to travel
 	elif travel_target: # if a travel target exists
 		state = TRAVEL

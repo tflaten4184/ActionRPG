@@ -30,6 +30,14 @@ collision_layer = 8
 [node name="Hitbox" parent="." index="6"]
 collision_mask = 260
 
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 0 )
+shape = null
+
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2( 0, 0 )
+shape = null
+
 [node name="TargetDetectionZone" parent="." index="7"]
 collision_mask = 130
 
@@ -39,5 +47,7 @@ shape = SubResource( 2 )
 [editable path="Hurtbox"]
 
 [editable path="WanderController"]
+
+[editable path="Hitbox"]
 
 [editable path="TargetDetectionZone"]

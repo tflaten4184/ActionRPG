@@ -61,8 +61,11 @@ func run(delta):
 			travel_state(delta)
 		
 	#print("physics npc")
-
+	animate()
 	velocity = move_and_slide(velocity)
+
+func animate():
+	pass
 
 func accelerate_toward_point(point, delta):
 	var direction = global_position.direction_to(point)

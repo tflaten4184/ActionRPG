@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
@@ -8,7 +8,11 @@
 [ext_resource path="res://Enemies/BaseEnemy/CombatEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://AI/EnemyCommander.tscn" type="PackedScene" id=7]
 [ext_resource path="res://NPC/BaseNPC/RangedAlly.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Buildings/EnemyBuildings/EnemySpawnerBuilding.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Buildings/Building.gd" type="Script" id=12]
+[ext_resource path="res://NPC/Archer/Archer.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -535,16 +539,38 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="RangedAlly" parent="YSort/Allies" instance=ExtResource( 8 )]
 position = Vector2( 56, 192 )
-collision_layer = 640
+
+[node name="Archer" parent="YSort/Allies" instance=ExtResource( 13 )]
+position = Vector2( -40, 320 )
+
+[node name="Archer2" parent="YSort/Allies" instance=ExtResource( 13 )]
+position = Vector2( 16, 320 )
+
+[node name="Archer3" parent="YSort/Allies" instance=ExtResource( 13 )]
+position = Vector2( 80, 320 )
+
+[node name="Archer4" parent="YSort/Allies" instance=ExtResource( 13 )]
+position = Vector2( 136, 312 )
 
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 6 )]
 position = Vector2( 48, 120 )
 
+[node name="Zombie" parent="YSort/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 120, 96 )
+
 [node name="AllyBuildings" type="YSort" parent="YSort"]
 
 [node name="EnemyBuildings" type="YSort" parent="YSort"]
+
+[node name="EnemySpawnerBuilding" parent="YSort/EnemyBuildings" instance=ExtResource( 11 )]
+position = Vector2( -64, -456 )
+script = ExtResource( 12 )
+
+[node name="EnemySpawnerBuilding2" parent="YSort/EnemyBuildings" instance=ExtResource( 11 )]
+position = Vector2( 64, -456 )
+script = ExtResource( 12 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
