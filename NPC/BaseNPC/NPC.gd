@@ -21,13 +21,13 @@ var ACCELERATION = 300
 var MAX_SPEED = 50
 var velocity = Vector2.ZERO
 onready var knockback = Vector2.ZERO
-var knockback_multiplier = 1.0
+var knockback_multiplier = 1.0 # Sensitivity to incoming knockback
 onready var travel_target = null
 
 onready var enable_wander = false
 
 func _ready():
-	pass
+	hurtbox.connect("area_entered", self, "_on_Hurtbox_area_entered")
 
 func _physics_process(delta): # To prevent recursion, this calls the Run function
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -42,19 +42,7 @@ func run(delta):
 	
 	match state:
 		IDLE:
-			# Check if it needs to travel
-			if travel_target: # if a travel target exists
-				state = TRAVEL
-			
-			else:
-				# Stop moving
-				velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			
-			
-			# Decide whether to start wandering
-			if enable_wander == true and wanderController.get_time_left() == 0:
-				state = pick_random_state([IDLE, WANDER])
-				wanderController.start_wander_timer(rand_range(1, 3))
+			idle_state(delta)
 		WANDER:
 			wander_state(delta)
 		TRAVEL:
@@ -66,6 +54,21 @@ func run(delta):
 
 func animate():
 	pass
+
+func idle_state(delta):
+	# Check if it needs to travel
+	if travel_target: # if a travel target exists
+		state = TRAVEL
+	
+	else:
+		# Stop moving
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	
+	# Decide whether to start wandering
+	if enable_wander == true and wanderController.get_time_left() == 0:
+		state = pick_random_state([IDLE, WANDER])
+		wanderController.start_wander_timer(rand_range(1, 3))
 
 func accelerate_toward_point(point, delta):
 	var direction = global_position.direction_to(point)
@@ -102,7 +105,7 @@ func _on_Hurtbox_area_entered(area):
 	#print(stats.health)
 	knockback = area.knockback_vector * area.knockback_strength * knockback_multiplier
 	hurtbox.create_hit_effect()
-	hurtbox.start_invincibility(0.3)
+	hurtbox.start_invincibility(0.1)
 
 func _on_Stats_no_health():
 	queue_free()

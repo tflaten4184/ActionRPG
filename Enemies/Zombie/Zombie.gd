@@ -5,6 +5,9 @@ extends "res://Enemies/BaseEnemy/CombatEnemy.gd"
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
+func _ready():
+	MAX_SPEED = 35
+
 func animate():
 	if velocity == Vector2.ZERO:
 		animationState.travel("Idle")

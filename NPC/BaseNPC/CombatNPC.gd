@@ -29,14 +29,7 @@ func run(delta):
 	seek_target()
 	match state:
 		IDLE:
-			# Stop moving
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-			
-			
-			# Decide whether to start wandering
-			if enable_wander == true and wanderController.get_time_left() == 0:
-				state = pick_random_state([IDLE, WANDER])
-				wanderController.start_wander_timer(rand_range(1, 3))
+			idle_state(delta)
 		WANDER:
 			wander_state(delta)
 		TRAVEL:
@@ -46,6 +39,15 @@ func run(delta):
 	#print("physics combatnpc")
 	animate()
 	velocity = move_and_slide(velocity)
+
+func idle_state(delta):
+	# Stop moving
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	# Decide whether to start wandering
+	if enable_wander == true and wanderController.get_time_left() == 0:
+		state = pick_random_state([IDLE, WANDER])
+		wanderController.start_wander_timer(rand_range(1, 3))
 
 func seek_target():
 	if targetDetectionZone.can_see_target():

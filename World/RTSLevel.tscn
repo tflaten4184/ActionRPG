@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://NPC/BaseNPC/RangedAlly.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Buildings/EnemyBuildings/EnemySpawnerBuilding.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Buildings/Building.gd" type="Script" id=12]
+[ext_resource path="res://Buildings/EnemyBuildings/ZombieSpawnerBuilding.tscn" type="PackedScene" id=11]
 [ext_resource path="res://NPC/Archer/Archer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Buildings/ArcherSpawnerBuilding.tscn" type="PackedScene" id=14]
 
@@ -538,6 +537,9 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="Allies" type="YSort" parent="YSort"]
 
+[node name="ArcherSpawnerBuilding" parent="YSort/Allies" instance=ExtResource( 14 )]
+position = Vector2( -64, 448 )
+
 [node name="RangedAlly" parent="YSort/Allies" instance=ExtResource( 8 )]
 position = Vector2( 56, 192 )
 collision_layer = 640
@@ -549,12 +551,6 @@ position = Vector2( -40, 320 )
 [node name="Archer2" parent="YSort/Allies" instance=ExtResource( 13 )]
 position = Vector2( 16, 320 )
 
-[node name="Archer3" parent="YSort/Allies" instance=ExtResource( 13 )]
-position = Vector2( 80, 320 )
-
-[node name="Archer4" parent="YSort/Allies" instance=ExtResource( 13 )]
-position = Vector2( 136, 312 )
-
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 6 )]
@@ -563,26 +559,14 @@ position = Vector2( 48, 120 )
 [node name="Zombie" parent="YSort/Enemies" instance=ExtResource( 9 )]
 position = Vector2( 40, -192 )
 
-[node name="AllyBuildings" type="YSort" parent="YSort"]
+[node name="ZombieSpawnerBuilding" parent="YSort/Enemies" instance=ExtResource( 11 )]
+position = Vector2( -80, -440 )
 
-[node name="ArcherSpawnerBuilding" parent="YSort/AllyBuildings" instance=ExtResource( 14 )]
-position = Vector2( -64, 448 )
+[node name="ZombieSpawnerBuilding2" parent="YSort/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 72, -440 )
 
-[node name="ArcherSpawnerBuilding2" parent="YSort/AllyBuildings" instance=ExtResource( 14 )]
-position = Vector2( 64, 448 )
-
-[node name="EnemyBuildings" type="YSort" parent="YSort"]
-
-[node name="EnemySpawnerBuilding" parent="YSort/EnemyBuildings" instance=ExtResource( 11 )]
-position = Vector2( -64, -456 )
-script = ExtResource( 12 )
-
-[node name="EnemySpawnerBuilding2" parent="YSort/EnemyBuildings" instance=ExtResource( 11 )]
-position = Vector2( 64, -456 )
-script = ExtResource( 12 )
-
-[node name="EnemySpawnerBuilding3" parent="YSort/EnemyBuildings" instance=ExtResource( 11 )]
-position = Vector2( 0, -496 )
+[node name="ZombieSpawnerBuilding3" parent="YSort/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 0, -512 )
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
