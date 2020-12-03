@@ -2,11 +2,12 @@ extends Node2D
 
 export(PackedScene) var unit # Link to scene of unit
 #onready var unit = preload("res://NPC/BaseNPC/NPC.tscn")
-
+export(int) var COOLDOWN
+onready var timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	timer.wait_time = COOLDOWN
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

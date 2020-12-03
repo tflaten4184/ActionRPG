@@ -4,7 +4,6 @@
 [ext_resource path="res://Buildings/EnemyBuildings/Grave.png" type="Texture" id=2]
 [ext_resource path="res://Buildings/EnemyBuildings/EnemySpawnerBuilding.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Animate"
 length = 0.6
@@ -34,6 +33,7 @@ hframes = 2
 
 [node name="UnitSpawner" parent="." index="5"]
 position = Vector2( 0, 32 )
+COOLDOWN = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 anims/Animate = SubResource( 1 )
