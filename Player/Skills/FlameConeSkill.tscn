@@ -94,6 +94,8 @@ hframes = 2
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
 collision_mask = 8
 script = ExtResource( 4 )
+damage = 3
+COOLDOWN = 0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 35.2251, 1.11029 )

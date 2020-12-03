@@ -13,7 +13,8 @@ onready var timer = $Cooldown
 
 func _on_Hitbox_area_entered(area):
 	shape.set_deferred("disabled", true)
-	timer.start(COOLDOWN)
+	if COOLDOWN != 0:
+		timer.start(COOLDOWN)
 
 
 func _on_Cooldown_timeout():

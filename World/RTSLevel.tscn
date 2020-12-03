@@ -542,8 +542,6 @@ position = Vector2( -64, 448 )
 
 [node name="RangedAlly" parent="YSort/Allies" instance=ExtResource( 8 )]
 position = Vector2( 56, 192 )
-collision_layer = 640
-collision_mask = 659
 
 [node name="Archer" parent="YSort/Allies" instance=ExtResource( 13 )]
 position = Vector2( -40, 320 )
