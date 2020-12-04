@@ -40,6 +40,7 @@ func run(delta):
 #	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 #	knockback = move_and_slide(knockback)
 	
+	seek_target() # invalid for a basic NPC
 	match state:
 		IDLE:
 			idle_state(delta)
@@ -47,12 +48,24 @@ func run(delta):
 			wander_state(delta)
 		TRAVEL:
 			travel_state(delta)
-		
-	#print("physics npc")
-	animate()
+		CHASE: # invalid for a basic NPC
+			chase_state(delta)
+		ATTACK: # invalid for a basic NPC
+			attack_state()
+	#print("physics combatnpc")
+	animate() 
 	velocity = move_and_slide(velocity)
 
 func animate():
+	pass
+
+func chase_state(delta): # invalid for a basic NPC
+	idle_state(delta)
+
+func attack_state(): # invalid for a basic NPC
+	pass
+
+func seek_target(): # invalid for a basic NPC
 	pass
 
 func idle_state(delta):
@@ -118,7 +131,7 @@ func _on_Stats_no_health():
 
 func _on_Hurtbox_invincibility_started():
 	blinkAnimationPlayer.play("Start")
-	print("start blink effect")
+	#print("start blink effect")
 
 
 func _on_Hurtbox_invincibility_ended():

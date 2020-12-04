@@ -1,6 +1,6 @@
 extends "res://NPC/BaseNPC/CombatNPC.gd"
 
-var target = null # target to shoot at (player), constantly updates
+#var target = null # target to shoot at (player), constantly updates
 var aim_position = null # most recent target position (in case target moves/disappears)
 var on_cooldown = false
 export(float, 0, 10, 0.1) var COOLDOWN = 5.0
@@ -39,16 +39,16 @@ func run(delta):
 
 func animate():
 	pass
+#
+#func idle_state(delta):
+#	# Stop moving (decelerate to 0)
+#	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+#
+#	# Decide whether to start wandering
+#	if enable_wander == true and wanderController.get_time_left() == 0:
+#		state = pick_random_state([IDLE, WANDER])
+#		wanderController.start_wander_timer(rand_range(1, 3))
 
-func idle_state(delta):
-	# Stop moving (decelerate to 0)
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	# Decide whether to start wandering
-	if enable_wander == true and wanderController.get_time_left() == 0:
-		state = pick_random_state([IDLE, WANDER])
-		wanderController.start_wander_timer(rand_range(1, 3))
-		
 func seek_target():
 	if firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
@@ -87,7 +87,7 @@ func animate_aim_body(aim_direction):
 	pass
 
 func shoot(): # plays animation, which also launches arrow at most recent target
-	print("shoot")
+	#print("shoot")
 	# ** Need bow-draw animation
 	#bowSprite.frame = 0
 	weaponAnimationPlayer.play("Firing")

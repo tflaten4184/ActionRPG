@@ -8,7 +8,7 @@ func can_see_target(): # in firing range
 
 func _on_FiringZone_body_entered(body):
 	target.append(body)
-	print("target in range")
+	#print("target in range")
 
 
 func _on_FiringZone_body_exited(body):

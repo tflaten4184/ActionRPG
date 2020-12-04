@@ -36,6 +36,7 @@ position = Vector2( -1.5, 3 )
 [node name="UnitSpawner" parent="." index="5"]
 position = Vector2( 0.25, -23 )
 unit = ExtResource( 2 )
+COOLDOWN = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 anims/Animate = SubResource( 1 )

@@ -8,7 +8,7 @@ func can_see_target(): # in vision range
 
 func _on_TargetDetectionZone_body_entered(body):
 	target.append(body)
-	print("target detected")
+	#print("target detected")
 
 
 func _on_TargetDetectionZone_body_exited(body):
