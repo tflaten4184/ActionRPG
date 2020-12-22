@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	units = get_tree().get_nodes_in_group("allies")
-	command_attack()
+	#command_attack()
 	
 
 func command_attack():

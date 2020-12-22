@@ -137,6 +137,11 @@ ability6={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":54,"unicode":0,"echo":false,"script":null)
  ]
 }
+follow_command={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777357,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -151,6 +156,7 @@ ability6={
 2d_physics/layer_9="AllyHurtbox"
 2d_physics/layer_10="NPC"
 2d_physics/layer_11="AllyProjectile"
+2d_physics/layer_12="PlayerCommands"
 
 [rendering]
 

@@ -3,6 +3,7 @@ extends Node2D
 var player = get_parent()
 onready var flameConeSkill = $FlameConeSkill
 onready var sandShieldSkill = $SandShieldSkill
+onready var followCommand = $FollowCommand
 
 onready var ability1 = flameConeSkill
 onready var ability2 = sandShieldSkill
@@ -51,6 +52,9 @@ func activate_ability5():
 	
 func activate_ability6():
 	ability6.activate()
+	
+func follow_command():
+	followCommand.execute(self)
 	
 func shield_popped():
 	sandShieldSkill.shield_popped()

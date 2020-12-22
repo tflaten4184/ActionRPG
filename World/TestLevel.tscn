@@ -584,7 +584,6 @@ spritePath = NodePath("../../../../TestLevel/YSort/Enemies/Skeleton5/YSort/Sprit
 
 [node name="CombatEnemy" parent="YSort/Enemies" instance=ExtResource( 11 )]
 position = Vector2( 40, -328 )
-collision_mask = 659
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -634,7 +633,6 @@ position = Vector2( 96, 64 )
 
 [node name="RangedNPC" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 304, -176 )
-collision_mask = 659
 
 [node name="HighGroundObjects" type="Node2D" parent="."]
 
@@ -647,13 +645,10 @@ position = Vector2( 40, 144 )
 
 [node name="RangedAlly" parent="." instance=ExtResource( 12 )]
 position = Vector2( 56, -296 )
-collision_layer = 640
 
 [node name="RangedAlly2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 16, -296 )
-collision_layer = 640
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 14 )]
 position = Vector2( 272, -424 )
-collision_mask = 659
 COOLDOWN = 2.3
