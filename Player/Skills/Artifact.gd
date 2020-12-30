@@ -55,6 +55,9 @@ func activate_ability6():
 	
 func follow_command():
 	followCommand.execute(self)
+
+func cancel_follow():
+	followCommand.cancel()
 	
 func shield_popped():
 	sandShieldSkill.shield_popped()

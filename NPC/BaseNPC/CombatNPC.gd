@@ -34,7 +34,9 @@ func _ready():
 #		wanderController.start_wander_timer(rand_range(1, 3))
 
 func seek_target():
-	if targetDetectionZone.can_see_target():
+	if state == self.FOLLOW:
+		pass # don't seek a target while following (ignore enemies)
+	elif targetDetectionZone.can_see_target():
 		state = CHASE
 		target = targetDetectionZone.target[0]
 		# Check if it needs to travel

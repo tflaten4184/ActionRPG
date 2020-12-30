@@ -1,10 +1,11 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=3]
 [ext_resource path="res://AI/AllyCommander.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://NPC/BaseNPC/CombatAlly.tscn" type="PackedScene" id=6]
 [ext_resource path="res://AI/EnemyCommander.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=10]
@@ -540,14 +541,17 @@ position = Vector2( -64, 448 )
 
 [node name="Archer" parent="YSort/Allies" instance=ExtResource( 13 )]
 position = Vector2( -40, 320 )
+collision_layer = 640
 
 [node name="Archer2" parent="YSort/Allies" instance=ExtResource( 13 )]
 position = Vector2( 16, 320 )
+collision_layer = 640
 
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="Zombie" parent="YSort/Enemies" instance=ExtResource( 9 )]
 position = Vector2( 40, -192 )
+collision_mask = 659
 
 [node name="ZombieSpawnerBuilding" parent="YSort/Enemies" instance=ExtResource( 11 )]
 position = Vector2( -80, -440 )
@@ -579,6 +583,10 @@ position = Vector2( 0, -456 )
 
 [node name="Objective" parent="EnemyCommander" index="0"]
 position = Vector2( 0, 936 )
+
+[node name="CombatAlly" parent="." instance=ExtResource( 6 )]
+position = Vector2( 24, 384 )
+collision_mask = 659
 
 [editable path="AllyCommander"]
 

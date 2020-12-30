@@ -19,23 +19,25 @@ func _ready():
 	pass # Replace with function body.
 
 
-func run(delta):
-	
-	seek_target()
-	match state:
-		IDLE:	
-			idle_state(delta)
-		WANDER:
-			wander_state(delta)
-		TRAVEL:
-			travel_state(delta)
-		CHASE:
-			chase_state(delta)
-		ATTACK:
-			attack_state()
-	#print("physics rangednpc")
-	animate()
-	velocity = move_and_slide(velocity)
+#func run(delta):
+#
+#	seek_target()
+#	match state:
+#		IDLE:	
+#			idle_state(delta)
+#		WANDER:
+#			wander_state(delta)
+#		TRAVEL:
+#			travel_state(delta)
+#		CHASE:
+#			chase_state(delta)
+#		ATTACK:
+#			attack_state()
+#		FOLLOW:
+#			follow_state(delta)
+#	#print("physics rangednpc")
+#	animate()
+#	velocity = move_and_slide(velocity)
 
 func animate():
 	pass
@@ -50,7 +52,9 @@ func animate():
 #		wanderController.start_wander_timer(rand_range(1, 3))
 
 func seek_target():
-	if firingZone.can_see_target(): # in range: stop and begin shooting
+	if state == self.FOLLOW:
+		pass # don't seek a target while following (ignore enemies)
+	elif firingZone.can_see_target(): # in range: stop and begin shooting
 		velocity = Vector2.ZERO
 		target = firingZone.target[0]
 		aim_position = target.global_position
@@ -69,7 +73,7 @@ func seek_target():
 
 func chase_state(delta):
 	if target != null:
-				accelerate_toward_point(target.global_position, delta)
+		accelerate_toward_point(target.global_position, delta)
 
 func attack_state():
 	var target_position = target.global_position

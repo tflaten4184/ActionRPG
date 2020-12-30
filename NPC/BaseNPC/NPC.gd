@@ -12,7 +12,8 @@ enum {
 	TRAVEL,
 	CHASE,
 	ATTACK,
-	CHANNEL
+	CHANNEL,
+	FOLLOW
 }
 
 var state = IDLE
@@ -23,6 +24,7 @@ var velocity = Vector2.ZERO
 onready var knockback = Vector2.ZERO
 var knockback_multiplier = 1.0 # Sensitivity to incoming knockback
 onready var travel_target = null
+onready var follow_target = null
 
 onready var enable_wander = false
 
@@ -52,6 +54,8 @@ func run(delta):
 			chase_state(delta)
 		ATTACK: # invalid for a basic NPC
 			attack_state()
+		FOLLOW: # ****** WORK IN PROGRESS ******
+			follow_state(delta)
 	#print("physics combatnpc")
 	animate() 
 	velocity = move_and_slide(velocity)
@@ -65,10 +69,20 @@ func chase_state(delta): # invalid for a basic NPC
 func attack_state(): # invalid for a basic NPC
 	pass
 
+func follow_state(delta):
+	if follow_target and global_position.distance_to(follow_target.global_position) > 10:
+		accelerate_toward_point(follow_target.global_position, delta)
+	else:
+		#follow_target = null
+		state = IDLE
+
 func seek_target(): # invalid for a basic NPC
 	pass
 
 func idle_state(delta):
+	# Check if it needs to follow
+	if follow_target:
+		state = FOLLOW
 	# Check if it needs to travel
 	if travel_target: # if a travel target exists
 		state = TRAVEL

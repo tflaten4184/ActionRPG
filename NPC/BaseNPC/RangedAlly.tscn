@@ -20,11 +20,14 @@ radius = 100.0
 [node name="RangedAlly" groups=[
 "allies",
 ] instance=ExtResource( 1 )]
+collision_mask = 659
 script = ExtResource( 4 )
 
 [node name="Sprite" parent="YSort" index="2"]
 material = SubResource( 1 )
+position = Vector2( 0, 3 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, -12 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
@@ -32,6 +35,9 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
 shape = SubResource( 3 )
+[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
+[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="Hurtbox"]
 

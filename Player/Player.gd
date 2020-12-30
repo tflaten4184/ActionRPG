@@ -121,8 +121,10 @@ func move_state(delta):
 	if Input.is_action_just_pressed("ability2"):
 		artifact.activate_ability2()
 		
-	if Input.is_action_just_pressed("follow_command"):
+	if Input.is_action_pressed("follow_command"):
 		artifact.follow_command()
+	else:
+		artifact.cancel_follow()
 	
 func attack_animation_finished():
 	state = MOVE

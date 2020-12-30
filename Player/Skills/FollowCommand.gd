@@ -2,12 +2,14 @@ extends Node2D
 
 onready var commandArea = $CommandArea
 onready var allies_in_range = []
+onready var current_followers = []
 
 func _ready():
 	pass
 	
 func _physics_process(delta):
-	pass
+	#if null in current_followers:
+	current_followers.remove(current_followers.find(null))
 
 
 
@@ -31,7 +33,15 @@ func execute(target):
 	# (need to add FollowState to Ally class)
 	print("command pressed")
 	for ally in allies_in_range:
-		ally.travel_target = target.global_position
+		if not ally in current_followers:
+			current_followers.append(ally)
+		ally.follow_target = target
+		ally.state = ally.FOLLOW
 		print(ally.state)
-		print(ally.travel_target)
+		print(ally.follow_target)
 
+func cancel():
+	for follower in current_followers:
+		if follower: # if follower still exists
+			follower.follow_target = null
+	current_followers = [] # clear the list of followers
